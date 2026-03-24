@@ -134,7 +134,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0.7;
+            color: #8FB0C7;
         }
 
         .kpi-icon svg { width: 14px; height: 14px; }
@@ -242,7 +242,7 @@
         .icon-tt { background: #000; }
         .icon-web { background: var(--blue); }
         .icon-google { background: #fff; border: 1px solid #e5e7eb; }
-        .icon-meta { background: #0082FB; }
+        .icon-meta { background: linear-gradient(135deg, #0082FB, #0099FF); }
         .icon-tech { background: var(--green); }
         .icon-nps { background: var(--amber); }
 
@@ -255,15 +255,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: nowrap;
+            gap: 4px;
         }
         .data-key {
             color: var(--muted);
             font-size: 12px;
+            flex: 1;
+            min-width: 0;
         }
         .data-val {
             font-size: 12.5px;
             font-weight: 600;
             color: var(--text);
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-left: 6px;
         }
         .data-val.blue { color: var(--blue); }
         .data-val.orange { color: var(--amber); }
@@ -425,12 +432,17 @@
 <!-- ─── HEADER ─── -->
 <header>
     <div class="header-left">
+        <img src="https://raw.githubusercontent.com/imstillprocessing/poa-dashboard/main/Logo%201_Bleu.png"
+             alt="POA Logo"
+             style="height:48px; width:auto; display:block; object-fit:contain;"
+             onerror="this.style.display='none'">
         <div class="header-titles">
-            <h1>POA Dashboard : Indicateurs de Croissance</h1>
-            <p>Vue d'ensemble des performances</p>
+            <h1>Dashboard : Pilotage Stratégique Start-Up</h1>
+            <p>Vue d'ensemble des performances | Exercice 2026 : Q2 2026 - Q2 2027</p>
         </div>
     </div>
     <div class="time-filters">
+        <button class="filter-btn">Année à ce jour</button>
         <button class="filter-btn">Jour</button>
         <button class="filter-btn">Semaine</button>
         <button class="filter-btn active">Mois</button>
@@ -442,23 +454,28 @@
 <!-- ─── KPI GRID ─── -->
 <div class="kpi-grid">
 
-    <!-- Utilisateurs Actifs -->
+    <!-- Abonnements Actifs -->
     <div class="kpi-card">
         <div class="kpi-top">
             <div class="kpi-label">
                 <div class="kpi-icon">
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
+                        <path d="M2 4h12v9a1 1 0 01-1 1H3a1 1 0 01-1-1V4z"/><path d="M5 4V3a1 1 0 011-1h4a1 1 0 011 1v1"/>
                     </svg>
                 </div>
-                Utilisateurs Actifs (MAU)
+                Abonnements Actifs
             </div>
-            <span class="trend up">▲ +12.5%</span>
+            <span class="trend up">▲ +0.0%</span>
         </div>
-        <div class="kpi-value">45,892</div>
+        <div class="kpi-value">3</div>
         <svg class="sparkline" viewBox="0 0 120 36" preserveAspectRatio="none">
-            <polyline points="0,28 20,24 40,26 60,18 80,15 100,10 120,8" fill="none" stroke="#93A170" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="0,34 20,34 40,34 60,30 80,26 100,22 120,18" fill="none" stroke="#93A170" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
+        <div style="display:flex; align-items:center; gap:5px; margin-top:6px;">
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="#8FB0C7" stroke-width="1.5"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+            <span style="font-size:12px; color:var(--muted); font-weight:500;">MAU</span>
+            <span id="kpi-mau-val" style="font-size:12px; font-weight:600; color:var(--text); margin-left:auto;">268</span>
+        </div>
     </div>
 
     <!-- Téléchargements -->
@@ -499,22 +516,22 @@
         </svg>
     </div>
 
-    <!-- Taux de Désabonnement -->
+    <!-- Recettes Transformées -->
     <div class="kpi-card">
         <div class="kpi-top">
             <div class="kpi-label">
                 <div class="kpi-icon">
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6"/><line x1="12" y1="10" x2="14" y2="12"/>
+                        <path d="M2 4h12M4 4V2h8v2M6 8h4M6 11h4M3 4l1 10h8l1-10"/>
                     </svg>
                 </div>
-                Taux de Désabonnement
+                Recettes Transformées
             </div>
-            <span class="trend down">▼ -2.1%</span>
+            <span class="trend up">▲ +0%</span>
         </div>
-        <div class="kpi-value">4.2%</div>
+        <div class="kpi-value">10</div>
         <svg class="sparkline" viewBox="0 0 120 36" preserveAspectRatio="none">
-            <polyline points="0,10 20,14 40,18 60,20 80,22 100,24 120,26" fill="none" stroke="#BF5223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="0,34 20,32 40,30 60,26 80,22 100,18 120,14" fill="none" stroke="#93A170" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     </div>
 
@@ -661,7 +678,7 @@
                     <div class="social-inner-card">
                         <div class="sub-title">
                             <div class="platform-icon icon-web">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="16" rx="2"/><line x1="2" y1="8" x2="22" y2="8"/><circle cx="6" cy="5.5" r="0.8" fill="white" stroke="none"/><circle cx="9.5" cy="5.5" r="0.8" fill="white" stroke="none"/><circle cx="13" cy="5.5" r="0.8" fill="white" stroke="none"/><line x1="6" y1="13" x2="10" y2="13"/><line x1="6" y1="16" x2="14" y2="16"/></svg>
                             </div>
                             Métriques Web
                         </div>
@@ -684,31 +701,31 @@
                 <!-- Bar chart -->
                 <div class="sub-block">
                     <div class="sub-title">Rétention Utilisateurs</div>
-                    <svg viewBox="0 0 220 100" width="80%" height="40%" style="display:block; margin: 4px auto 0;">
-                        <!-- Y axis labels -->
-                        <text x="0" y="8"  font-size="4" fill="#6b7280">100</text>
-                        <text x="0" y="27" font-size="4" fill="#6b7280">75</text>
-                        <text x="0" y="46" font-size="4" fill="#6b7280">50</text>
-                        <text x="0" y="65" font-size="4" fill="#6b7280">25</text>
-                        <text x="0" y="78" font-size="4" fill="#6b7280">0</text>
+                    <svg class="retention-svg" viewBox="0 0 220 72" width="80%" style="display:block; margin: 4px auto 0;">
+                        <!-- Y axis labels — font-size scaled so rendered size ≈ 12px -->
+                        <text x="0" y="6"  font-size="3.5" fill="#6b7280">100</text>
+                        <text x="0" y="20" font-size="3.5" fill="#6b7280">75</text>
+                        <text x="0" y="34" font-size="3.5" fill="#6b7280">50</text>
+                        <text x="0" y="48" font-size="3.5" fill="#6b7280">25</text>
+                        <text x="0" y="57" font-size="3.5" fill="#6b7280">0</text>
                         <!-- Grid lines -->
-                        <line x1="14" y1="4"  x2="218" y2="4"  stroke="#f0f0f0" stroke-width="0.6"/>
-                        <line x1="14" y1="23" x2="218" y2="23" stroke="#f0f0f0" stroke-width="0.6"/>
-                        <line x1="14" y1="42" x2="218" y2="42" stroke="#f0f0f0" stroke-width="0.6"/>
-                        <line x1="14" y1="61" x2="218" y2="61" stroke="#f0f0f0" stroke-width="0.6"/>
-                        <line x1="14" y1="76" x2="218" y2="76" stroke="#e5e7eb" stroke-width="0.6"/>
-                        <!-- Bar Jour 1: 78/80*72=70.2≈70, top=76-70=6 -->
-                        <rect x="26"  y="20"  width="44" height="56" rx="3" fill="#93A170"/>
-                        <text x="48"  y="85" font-size="4" fill="#6b7280" text-anchor="middle" font-family="DM Sans,sans-serif">Jour 1</text>
-                        <text x="48"  y="95" font-size="4" fill="#93A170" text-anchor="middle" font-weight="600" font-family="DM Sans,sans-serif">78%</text>
-                        <!-- Bar Jour 7: 52/80*72=46.8≈47, top=76-47=29 -->
-                        <rect x="88"  y="39" width="44" height="37" rx="3" fill="#8FB0C7"/>
-                        <text x="110" y="85" font-size="4" fill="#6b7280" text-anchor="middle" font-family="DM Sans,sans-serif">Jour 7</text>
-                        <text x="110" y="95" font-size="4" fill="#8FB0C7" text-anchor="middle" font-weight="600" font-family="DM Sans,sans-serif">52%</text>
-                        <!-- Bar Jour 30: 34/80*72=30.6≈31, top=76-31=45 -->
-                        <rect x="150" y="52" width="44" height="24" rx="3" fill="#F79E2B"/>
-                        <text x="172" y="85" font-size="4" fill="#6b7280" text-anchor="middle" font-family="DM Sans,sans-serif">Jour 30</text>
-                        <text x="172" y="95" font-size="4" fill="#F79E2B" text-anchor="middle" font-weight="600" font-family="DM Sans,sans-serif">34%</text>
+                        <line x1="14" y1="3"  x2="218" y2="3"  stroke="#f0f0f0" stroke-width="0.6"/>
+                        <line x1="14" y1="17" x2="218" y2="17" stroke="#f0f0f0" stroke-width="0.6"/>
+                        <line x1="14" y1="31" x2="218" y2="31" stroke="#f0f0f0" stroke-width="0.6"/>
+                        <line x1="14" y1="45" x2="218" y2="45" stroke="#f0f0f0" stroke-width="0.6"/>
+                        <line x1="14" y1="56" x2="218" y2="56" stroke="#e5e7eb" stroke-width="0.6"/>
+                        <!-- Bar Jour 1 — y/height updated by JS; initial: 78/80*53≈51, top=56-51=5 -->
+                        <rect x="26"  y="5"  width="44" height="51" rx="3" fill="#93A170"/>
+                        <text x="48"  y="63" font-size="3.5" fill="#6b7280" text-anchor="middle" font-family="DM Sans,sans-serif">Jour 1</text>
+                        <text x="48"  y="71" class="pct-label" font-size="3.5" fill="#93A170" text-anchor="middle" font-weight="600" font-family="DM Sans,sans-serif">78%</text>
+                        <!-- Bar Jour 7 — 52/80*53≈34, top=56-34=22 -->
+                        <rect x="88"  y="22" width="44" height="34" rx="3" fill="#8FB0C7"/>
+                        <text x="110" y="63" font-size="3.5" fill="#6b7280" text-anchor="middle" font-family="DM Sans,sans-serif">Jour 7</text>
+                        <text x="110" y="71" class="pct-label" font-size="3.5" fill="#8FB0C7" text-anchor="middle" font-weight="600" font-family="DM Sans,sans-serif">52%</text>
+                        <!-- Bar Jour 30 — 34/80*53≈22, top=56-22=34 -->
+                        <rect x="150" y="34" width="44" height="22" rx="3" fill="#F79E2B"/>
+                        <text x="172" y="63" font-size="3.5" fill="#6b7280" text-anchor="middle" font-family="DM Sans,sans-serif">Jour 30</text>
+                        <text x="172" y="71" class="pct-label" font-size="3.5" fill="#F79E2B" text-anchor="middle" font-weight="600" font-family="DM Sans,sans-serif">34%</text>
                     </svg>
                 </div>
 
@@ -716,40 +733,40 @@
                 <div class="sub-block">
                     <div class="sub-title">Métriques Produit</div>
                     <div class="data-rows">
-                        <div class="data-row">
+                        <div class="data-row metriques-row" id="mau-row">
+                            <span class="data-key" style="display:flex;align-items:center;gap:6px;">
+                                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#8FB0C7" stroke-width="1.5"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+                                Utilisateurs Actifs (MAU)
+                            </span>
+                            <span class="data-val" id="mau-val">310</span>
+                        </div>
+                        <div class="data-row metriques-row">
                             <span class="data-key" style="display:flex;align-items:center;gap:6px;">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93A170" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                                 Taux d'activation
                             </span>
-                            <span class="data-val">68.5%</span>
+                            <span class="data-val">60.0%</span>
                         </div>
-                        <div class="data-row">
+                        <div class="data-row metriques-row">
                             <span class="data-key" style="display:flex;align-items:center;gap:6px;">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#BF5223" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
                                 Taux de désabonnement
                             </span>
                             <span class="data-val">4.2%</span>
                         </div>
-                        <div class="data-row">
+                        <div class="data-row metriques-row">
                             <span class="data-key" style="display:flex;align-items:center;gap:6px;">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8FB0C7" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg>
                                 Indice de formation d'habitude
                             </span>
                             <span class="data-val">7.8/10</span>
                         </div>
-                        <div class="data-row">
+                        <div class="data-row metriques-row">
                             <span class="data-key" style="display:flex;align-items:center;gap:6px;">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F79E2B" stroke-width="2" stroke-linecap="round"><polyline points="13 2 13 9 20 9"/><path d="M21 3L13 11l-4-4-7 7"/></svg>
                                 TTV (Time to Value)
                             </span>
                             <span class="data-val">2.3 jours</span>
-                        </div>
-                        <div class="data-row">
-                            <span class="data-key" style="display:flex;align-items:center;gap:6px;">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93A170" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17h7M17 14v7"/></svg>
-                                Utilisation fonctionnalités
-                            </span>
-                            <span class="data-val">73%</span>
                         </div>
                     </div>
                 </div>
@@ -793,7 +810,7 @@
                 <div class="sub-block">
                     <div class="sub-title">
                         <div class="platform-icon icon-meta">
-                            <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                            <svg viewBox="0 0 36 18" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 8.5C4.5 6.5 5.6 5 7 5c1.2 0 2.1 0.7 3.2 2.5C9.1 9 8.2 10.8 7 10.8 5.6 10.8 4.5 9.3 4.5 8.5zM7 2C3.7 2 1 4.9 1 8.5 1 12.3 3.5 14 6.2 14c1.8 0 3.3-0.9 4.8-3 0.7 1 1.6 1.8 2.5 2.3 0.8 0.5 1.7 0.7 2.5 0.7 3.3 0 6-2.8 6-6.5C22 3.9 19.5 2 17 2c-1.7 0-3.2 0.8-4.8 3C10.9 3.1 9.1 2 7 2zM18.8 8.5c0 1.8-1.1 3.3-2.5 3.3-0.9 0-1.7-0.5-2.5-1.5 0.9-1.5 1.7-3.2 2.5-3.2C17.7 7.1 18.8 8 18.8 8.5z" transform="scale(1.3) translate(1, 1)"/></svg>
                         </div>
                         Meta Ads
                     </div>
@@ -828,12 +845,14 @@
                         Santé Technique
                     </div>
                     <div class="data-rows">
-                        <div class="data-row"><span class="data-key"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93A170" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <div class="data-row technique-row"><span class="data-key"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93A170" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                              Taux de crash</span><span class="data-val">0.3%</span></div>
-                        <div class="data-row"><span class="data-key"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93A170" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <div class="data-row technique-row"><span class="data-key"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93A170" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                              Temps de chargement</span><span class="data-val">1.2s</span></div>
-                        <div class="data-row"><span class="data-key"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93A170" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <div class="data-row technique-row"><span class="data-key"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93A170" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                              Latence API</span><span class="data-val">145ms</span></div>
+                        <div class="data-row technique-row"><span class="data-key"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8FB0C7" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="m9 12 2 2 4-4"/></svg>
+                             Précision Moteur de Substitution</span><span class="data-val technique-precision">76%</span></div>
                     </div>
                 </div>
 
@@ -847,17 +866,99 @@
                     </div>
                     <div class="score-grid">
                         <div class="score-item">
-                            <div class="score-num">58</div>
+                            <div class="score-num nps-val">58</div>
                             <div class="score-info">
                                 <div class="score-label-top">Net Promoter Score</div>
                                 <div class="score-sub">Excellent</div>
                             </div>
                         </div>
                         <div class="score-item">
-                            <div class="score-num">42%</div>
+                            <div class="score-num ellis-val">42%</div>
                             <div class="score-info">
                                 <div class="score-label-top">Test de Sean Ellis</div>
                                 <div class="score-sub">PMF atteint</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Utilisation Fonctionnalités -->
+        <div class="section-block">
+            <h2 class="section-title">Utilisation Fonctionnalités</h2>
+            <div class="card">
+
+                <div class="sub-block">
+                    <div class="data-rows">
+                        <div class="data-row">
+                            <span class="data-key" style="display:flex;align-items:center;gap:6px;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93A170" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17h7M17 14v7"/></svg>
+                                Utilisation fonctionnalités
+                            </span>
+                            <span class="data-val util-fonc">42%</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-key" style="display:flex;align-items:center;gap:6px;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F79E2B" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="6" cy="6" r="1" fill="#F79E2B"/><circle cx="6" cy="12" r="1" fill="#F79E2B"/><circle cx="6" cy="18" r="1" fill="#F79E2B"/></svg>
+                                Recettes transformées
+                            </span>
+                            <span class="data-val util-rec-trans">95</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-key" style="display:flex;align-items:center;gap:6px;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8FB0C7" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                                Recettes partagées
+                            </span>
+                            <span class="data-val util-rec-part">12</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Répartition par Régime Alimentaire -->
+                <div class="sub-block">
+                    <div class="sub-title" style="margin-bottom:10px;">
+                        <div class="platform-icon" style="background:var(--green);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 4 5c0 5 3 9 8 9z"/><path d="M12 12c0-5 5-8 8-7-1 5-4 8-8 9z"/></svg>
+                        </div>
+                        Répartition par Régime Alimentaire
+                    </div>
+                    <div class="regime-bars" style="display:flex;flex-direction:column;gap:7px;">
+                        <div class="regime-row" data-regime="0">
+                            <div style="display:flex;justify-content:space-between;margin-bottom:3px;">
+                                <span style="font-size:11.5px;color:var(--muted);">Omnivore</span>
+                                <span style="font-size:11.5px;font-weight:600;color:var(--text);" class="regime-val">42%</span>
+                            </div>
+                            <div style="background:#eef2f5;border-radius:4px;height:6px;overflow:hidden;">
+                                <div class="regime-bar" style="height:100%;width:42%;background:#8FB0C7;border-radius:4px;transition:width 0.4s ease;"></div>
+                            </div>
+                        </div>
+                        <div class="regime-row" data-regime="1">
+                            <div style="display:flex;justify-content:space-between;margin-bottom:3px;">
+                                <span style="font-size:11.5px;color:var(--muted);">Végétarien</span>
+                                <span style="font-size:11.5px;font-weight:600;color:var(--text);" class="regime-val">28%</span>
+                            </div>
+                            <div style="background:#eef2f5;border-radius:4px;height:6px;overflow:hidden;">
+                                <div class="regime-bar" style="height:100%;width:28%;background:#93A170;border-radius:4px;transition:width 0.4s ease;"></div>
+                            </div>
+                        </div>
+                        <div class="regime-row" data-regime="2">
+                            <div style="display:flex;justify-content:space-between;margin-bottom:3px;">
+                                <span style="font-size:11.5px;color:var(--muted);">Sans gluten</span>
+                                <span style="font-size:11.5px;font-weight:600;color:var(--text);" class="regime-val">18%</span>
+                            </div>
+                            <div style="background:#eef2f5;border-radius:4px;height:6px;overflow:hidden;">
+                                <div class="regime-bar" style="height:100%;width:18%;background:#F79E2B;border-radius:4px;transition:width 0.4s ease;"></div>
+                            </div>
+                        </div>
+                        <div class="regime-row" data-regime="3">
+                            <div style="display:flex;justify-content:space-between;margin-bottom:3px;">
+                                <span style="font-size:11.5px;color:var(--muted);">Vegan</span>
+                                <span style="font-size:11.5px;font-weight:600;color:var(--text);" class="regime-val">12%</span>
+                            </div>
+                            <div style="background:#eef2f5;border-radius:4px;height:6px;overflow:hidden;">
+                                <div class="regime-bar" style="height:100%;width:12%;background:#BF5223;border-radius:4px;transition:width 0.4s ease;"></div>
                             </div>
                         </div>
                     </div>
@@ -870,15 +971,458 @@
 
 </div>
 
-<script>
-    // Filter buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
-    });
-</script>
 
+</body>
+</html>
+<script>
+// ═══════════════════════════════════════════════════════════
+//  POA – APP NUTRITION  |  Avril 2026 → Avril 2027
+//
+//  Abonnements : jour=3, semaine=6, mois=11, trimestre=23, an=88
+//  Prix abo : €50/an  →  CA = abos × €50
+//  Meta Ads : ~500 impressions/mois  |  Google : similaire
+//  Churn : annuel ~20% (pas réalisé avant avr-2027)
+// ═══════════════════════════════════════════════════════════
+
+const DATA = {
+
+    // ── ANNÉE À CE JOUR (sept 2026, mois 6) ──────────────────
+    annee_ce_jour: {
+        kpis: [
+            // [0] Abonnements actifs cumul avr→sep = 27
+            { value: '27',      trend: 'up',   delta: '+800%'   },
+            // [1] Téléchargements cumul 6 mois ≈ 2 627
+            { value: '2 627',   trend: 'up',   delta: '+101%'   },
+            // [2] Taux d'activation
+            { value: '62.0%',   trend: 'up',   delta: '+4.0%'   },
+            // [3] Taux désabonnement (annuel, non réalisé)
+            { value: '580',      trend: 'up',   delta: 'YTD'       },
+            // [4] CA cumul = 27 × €50 = €1 350
+            { value: '€1 350',  trend: 'up',   delta: '+800%'   },
+            // [5] ROI = €1 350 / €480 dépenses ads = 2.8x
+            { value: '2.8x',    trend: 'up',   delta: 'YTD'     },
+            // [6] CAC = €480 / 27 = ~€18
+            { value: '€18',     trend: 'down', delta: '-33%'    },
+            // [7] LTV
+            { value: '€50',     trend: 'up',   delta: 'stable'  },
+        ],
+        sparklines: [
+            '0,34 20,32 40,28 60,24 80,20 100,16 120,12',
+            '0,32 20,28 40,24 60,20 80,15 100,11 120,7',
+            '0,26 20,25 40,24 60,23 80,21 100,19 120,18',
+            '0,32 20,29 40,25 60,21 80,17 100,13 120,9',
+            '0,34 20,30 40,25 60,20 80,15 100,11 120,7',
+            '0,28 20,26 40,24 60,22 80,20 100,18 120,16',
+            '0,22 20,21 40,20 60,19 80,18 100,17 120,16',
+            '0,20 20,20 40,20 60,20 80,20 100,20 120,20',
+        ],
+        sparkColors: ['#93A170','#93A170','#93A170','#93A170','#93A170','#93A170','#BF5223','#93A170'],
+        mau: '604',
+        social: {
+            ig:  ['84',    '3.8%', '4.2%', '1.8%'],
+            fb:  ['12',    '1.5%', '1.8%', '0.8%'],
+            tt:  ['142',   '5.2%', '6.1%', '3.0%'],
+            web: { visites: '1 820', duree: '3m 10s', conv: '1.5%' },
+        },
+        ads: {
+            google: { imp: '1 200', ctr: '1.2%', cpc: '€1.20', cpm: '€6.00', conv: '0.5%', cpa: '€240' },
+            meta:   { imp: '2 800', ctr: '1.8%', cpc: '€0.82', cpm: '€5.20', conv: '0.4%', cpa: '€185' },
+        },
+        retention: { j1: 68, j7: 42, j30: 22 },
+        metriques: ['62.0%', '~20% annuel', '6.8/10', '3.1 jours', '48%'],
+        technique: ['0.5%', '1.7s', '195ms', '84%'],
+        satisfaction: { nps: '32', ellis: '28%' },
+        utilisation: { fonc: '48%', recTrans: '580', recPart: '72', regime: [40, 30, 18, 12] },
+    },
+
+    // ── JOUR ─────────────────────────────────────────────────
+    jour: {
+        kpis: [
+            // 3 abos dès J1 (fondateurs / early adopters)
+            { value: '3',       trend: 'up',   delta: 'Lancement' },
+            // ~10 téléchargements/jour en avr
+            { value: '10',      trend: 'up',   delta: '+0%'       },
+            { value: '58.0%',   trend: 'up',   delta: '+0%'       },
+            { value: '5',        trend: 'up',   delta: 'J1'         },
+            // CA = 3 × €50 = €150
+            { value: '€150',    trend: 'up',   delta: 'J1'        },
+            // ROI trop tôt pour calculer
+            { value: '—',       trend: 'up',   delta: '—'         },
+            { value: '—',       trend: 'down', delta: '—'         },
+            { value: '€50',     trend: 'up',   delta: 'fixe'      },
+        ],
+        sparklines: [
+            '0,34 20,34 40,34 60,34 80,34 100,32 120,30',
+            '0,34 20,33 40,32 60,31 80,30 100,29 120,28',
+            '0,28 20,28 40,27 60,27 80,26 100,26 120,25',
+            '0,32 20,29 40,25 60,21 80,17 100,13 120,9',
+            '0,34 20,34 40,34 60,34 80,34 100,34 120,33',
+            '0,20 20,20 40,20 60,20 80,20 100,20 120,20',
+            '0,20 20,20 40,20 60,20 80,20 100,20 120,20',
+            '0,20 20,20 40,20 60,20 80,20 100,20 120,20',
+        ],
+        sparkColors: ['#93A170','#93A170','#93A170','#93A170','#93A170','#93A170','#BF5223','#93A170'],
+        mau: '9',
+        social: {
+            ig:  ['56',   '2.1%', '2.4%', '0.5%'],
+            fb:  ['4',    '0.8%', '1.0%', '0.3%'],
+            tt:  ['23',   '3.4%', '4.0%', '1.2%'],
+            web: { visites: '18', duree: '2m 10s', conv: '0.8%' },
+        },
+        ads: {
+            // ~500 impressions/mois → ~17/jour
+            google: { imp: '4',     ctr: '0.8%', cpc: '€1.25', cpm: '€6.10', conv: '0.4%', cpa: '€310' },
+            meta:   { imp: '10',    ctr: '1.2%', cpc: '€0.90', cpm: '€5.50', conv: '0.2%', cpa: '—'    },
+        },
+        retention: { j1: 55, j7: 30, j30: 10 },
+        metriques: ['58.0%', '~20% annuel', '6.2/10', '3.5 jours', '38%'],
+        technique: ['1.2%', '2.4s', '280ms', '68%'],
+        satisfaction: { nps: '22', ellis: '21%' },
+        utilisation: { fonc: '38%', recTrans: '5', recPart: '1', regime: [45, 25, 18, 12] },
+    },
+
+    // ── SEMAINE ───────────────────────────────────────────────
+    semaine: {
+        kpis: [
+            // 6 abos après ~1 semaine
+            { value: '6',       trend: 'up',   delta: '+100%'     },
+            // ~70 téléchargements/semaine
+            { value: '70',      trend: 'up',   delta: '+0%'       },
+            { value: '59.0%',   trend: 'up',   delta: '+1.0%'     },
+            { value: '28',       trend: 'up',   delta: '+460%'      },
+            // CA = 6 × €50 = €300
+            { value: '€300',    trend: 'up',   delta: '+100%'     },
+            { value: '1.2x',    trend: 'up',   delta: 'S1'        },
+            { value: '€13',     trend: 'down', delta: 'S1'        },
+            { value: '€50',     trend: 'up',   delta: 'fixe'      },
+        ],
+        sparklines: [
+            '0,34 20,33 40,33 60,32 80,31 100,30 120,28',
+            '0,33 20,31 40,29 60,27 80,25 100,23 120,21',
+            '0,27 20,26 40,26 60,25 80,24 100,23 120,22',
+            '0,32 20,29 40,25 60,21 80,17 100,13 120,9',
+            '0,34 20,32 40,30 60,28 80,26 100,24 120,22',
+            '0,25 20,24 40,23 60,22 80,21 100,20 120,19',
+            '0,22 20,22 40,21 60,21 80,20 100,20 120,19',
+            '0,20 20,20 40,20 60,20 80,20 100,20 120,20',
+        ],
+        sparkColors: ['#93A170','#93A170','#93A170','#93A170','#93A170','#93A170','#BF5223','#93A170'],
+        mau: '63',
+        social: {
+            ig:  ['58',   '2.5%', '2.8%', '0.7%'],
+            fb:  ['5',    '1.0%', '1.2%', '0.4%'],
+            tt:  ['31',   '3.8%', '4.5%', '1.5%'],
+            web: { visites: '95', duree: '2m 25s', conv: '1.0%' },
+        },
+        ads: {
+            // ~500 imp/mois → ~125/semaine
+            google: { imp: '33',    ctr: '0.9%', cpc: '€1.22', cpm: '€6.05', conv: '0.4%', cpa: '€305' },
+            meta:   { imp: '77',    ctr: '1.4%', cpc: '€0.88', cpm: '€5.40', conv: '0.3%', cpa: '€293' },
+        },
+        retention: { j1: 58, j7: 33, j30: 12 },
+        metriques: ['59.0%', '~20% annuel', '6.4/10', '3.4 jours', '40%'],
+        technique: ['1.0%', '2.2s', '265ms', '70%'],
+        satisfaction: { nps: '25', ellis: '23%' },
+        utilisation: { fonc: '40%', recTrans: '28', recPart: '4', regime: [44, 26, 18, 12] },
+    },
+
+    // ── MOIS (avr 2026) ───────────────────────────────────────
+    mois: {
+        kpis: [
+            // 11 abos fin avril
+            { value: '11',      trend: 'up',   delta: '+267%'     },
+            // 300 téléchargements en avr
+            { value: '300',     trend: 'up',   delta: 'Avr 2026'  },
+            { value: '60.0%',   trend: 'up',   delta: '+0%'       },
+            { value: '95',       trend: 'up',   delta: '+239%'      },
+            // CA = 11 × €50 = €550
+            { value: '€550',    trend: 'up',   delta: '+267%'     },
+            // ROI = €550 / €80 ads = 6.9x
+            { value: '6.9x',    trend: 'up',   delta: 'M1'        },
+            // CAC = €80 / 11 = €7.3
+            { value: '€7',      trend: 'down', delta: 'M1'        },
+            { value: '€50',     trend: 'up',   delta: 'fixe'      },
+        ],
+        sparklines: [
+            '0,34 20,33 40,32 60,31 80,30 100,29 120,27',
+            '0,32 20,30 40,27 60,24 80,21 100,18 120,15',
+            '0,26 20,25 40,25 60,24 80,23 100,22 120,21',
+            '0,32 20,29 40,25 60,21 80,17 100,13 120,9',
+            '0,34 20,32 40,29 60,26 80,23 100,20 120,17',
+            '0,26 20,25 40,24 60,23 80,22 100,21 120,20',
+            '0,23 20,22 40,21 60,21 80,20 100,20 120,19',
+            '0,20 20,20 40,20 60,20 80,20 100,20 120,20',
+        ],
+        sparkColors: ['#93A170','#93A170','#93A170','#93A170','#93A170','#93A170','#BF5223','#93A170'],
+        mau: '268',
+        social: {
+            ig:  ['62',   '3.0%', '3.4%', '1.0%'],
+            fb:  ['6',    '1.2%', '1.4%', '0.5%'],
+            tt:  ['48',   '4.5%', '5.2%', '2.0%'],
+            web: { visites: '390', duree: '2m 40s', conv: '1.2%' },
+        },
+        ads: {
+            // ~500 impressions/mois
+            google: { imp: '150',   ctr: '1.0%', cpc: '€1.20', cpm: '€6.00', conv: '0.5%', cpa: '€240' },
+            meta:   { imp: '350',   ctr: '1.5%', cpc: '€0.85', cpm: '€5.30', conv: '0.3%', cpa: '€267' },
+        },
+        retention: { j1: 60, j7: 35, j30: 14 },
+        metriques: ['60.0%', '~20% annuel', '6.5/10', '3.3 jours', '42%'],
+        technique: ['0.9%', '2.0s', '250ms', '74%'],
+        satisfaction: { nps: '28', ellis: '24%' },
+        utilisation: { fonc: '42%', recTrans: '95', recPart: '12', regime: [42, 28, 18, 12] },
+    },
+
+    // ── TRIMESTRE (avr–jun 2026) ──────────────────────────────
+    trimestre: {
+        kpis: [
+            // 23 abos fin T1
+            { value: '23',      trend: 'up',   delta: '+109%'     },
+            // Téléchargements T1 = 300+345+397 = 1 042
+            { value: '1 042',   trend: 'up',   delta: '+32%/mois' },
+            { value: '61.5%',   trend: 'up',   delta: '+1.5%'     },
+            { value: '310',      trend: 'up',   delta: '+226%'      },
+            // CA = 23 × €50 = €1 150
+            { value: '€1 150',  trend: 'up',   delta: '+109%'     },
+            // ROI = €1 150 / €240 ads = 4.8x
+            { value: '4.8x',    trend: 'up',   delta: 'T1'        },
+            // CAC = €240 / 23 = €10
+            { value: '€10',     trend: 'down', delta: '-30%'      },
+            { value: '€50',     trend: 'up',   delta: 'fixe'      },
+        ],
+        sparklines: [
+            '0,33 20,30 40,26 60,22 80,18 100,15 120,12',
+            '0,30 20,26 40,22 60,18 80,14 100,11 120,8',
+            '0,25 20,24 40,23 60,22 80,21 100,20 120,19',
+            '0,32 20,29 40,25 60,21 80,17 100,13 120,9',
+            '0,32 20,28 40,24 60,19 80,15 100,11 120,8',
+            '0,26 20,24 40,22 60,21 80,19 100,18 120,16',
+            '0,25 20,23 40,22 60,21 80,20 100,19 120,18',
+            '0,20 20,20 40,20 60,20 80,20 100,20 120,20',
+        ],
+        sparkColors: ['#93A170','#93A170','#93A170','#93A170','#93A170','#93A170','#BF5223','#93A170'],
+        mau: '354',
+        social: {
+            ig:  ['74',   '3.5%', '4.0%', '1.4%'],
+            fb:  ['8',    '1.4%', '1.6%', '0.6%'],
+            tt:  ['98',   '5.0%', '5.8%', '2.6%'],
+            web: { visites: '1 280', duree: '2m 58s', conv: '1.4%' },
+        },
+        ads: {
+            // ~500/mois × 3 mois = 1 500 pour le trimestre
+            google: { imp: '450',   ctr: '1.1%', cpc: '€1.18', cpm: '€5.95', conv: '0.5%', cpa: '€236' },
+            meta:   { imp: '1 050', ctr: '1.6%', cpc: '€0.84', cpm: '€5.25', conv: '0.35%',cpa: '€240' },
+        },
+        retention: { j1: 62, j7: 37, j30: 16 },
+        metriques: ['61.5%', '~20% annuel', '6.7/10', '3.2 jours', '44%'],
+        technique: ['0.7%', '1.85s', '230ms', '79%'],
+        satisfaction: { nps: '30', ellis: '26%' },
+        utilisation: { fonc: '44%', recTrans: '310', recPart: '38', regime: [41, 29, 18, 12] },
+    },
+
+    // ── ANNÉE COMPLÈTE (avr 2026 → avr 2027) ─────────────────
+    annee: {
+        kpis: [
+            // 88 abos fin d'année
+            { value: '88',      trend: 'up',   delta: '+700%'     },
+            // Téléchargements annuels ≈ 10 312
+            { value: '10 312',  trend: 'up',   delta: '+15%/mois' },
+            { value: '65.0%',   trend: 'up',   delta: '+5.0%'     },
+            // Churn réel fin an 1 ~20% des 88 = ~18 non-renouvelants
+            { value: '1 850',    trend: 'up',   delta: '+497%'      },
+            // CA = 88 × €50 = €4 400
+            { value: '€4 400',  trend: 'up',   delta: '+700%'     },
+            // ROI = €4 400 / €960 dépenses = 4.6x
+            { value: '4.6x',    trend: 'up',   delta: 'An 1'      },
+            // CAC = €960 / 88 = €11
+            { value: '€11',     trend: 'down', delta: '-57%'      },
+            { value: '€50',     trend: 'up',   delta: 'fixe'      },
+        ],
+        sparklines: [
+            '0,34 20,30 40,25 60,19 80,14 100,9 120,5',
+            '0,32 20,27 40,21 60,16 80,11 100,7 120,4',
+            '0,24 20,23 40,21 60,20 80,19 100,17 120,16',
+            '0,32 20,29 40,25 60,21 80,17 100,13 120,9',
+            '0,34 20,29 40,23 60,17 80,12 100,8 120,4',
+            '0,28 20,25 40,22 60,19 80,16 100,13 120,10',
+            '0,30 20,26 40,22 60,18 80,15 100,12 120,9',
+            '0,20 20,20 40,20 60,20 80,20 100,20 120,20',
+        ],
+        sparkColors: ['#93A170','#93A170','#93A170','#93A170','#93A170','#93A170','#BF5223','#93A170'],
+        mau: '1 380',
+        social: {
+            ig:  ['180',  '5.2%', '6.0%', '2.8%'],
+            fb:  ['22',   '2.0%', '2.4%', '1.0%'],
+            tt:  ['420',  '7.8%', '9.0%', '4.5%'],
+            web: { visites: '15 200', duree: '3m 45s', conv: '2.2%' },
+        },
+        ads: {
+            // ~500/mois × 12 = 6 000 annuel (légère croissance incluse)
+            google: { imp: '1 800', ctr: '1.3%', cpc: '€1.15', cpm: '€5.80', conv: '0.6%', cpa: '€192' },
+            meta:   { imp: '4 200', ctr: '1.9%', cpc: '€0.80', cpm: '€5.00', conv: '0.5%', cpa: '€100' },
+        },
+        retention: { j1: 70, j7: 44, j30: 24 },
+        metriques: ['65.0%', '20% annuel', '7.2/10', '2.8 jours', '55%'],
+        // Santé technique : nette amélioration en fin d'année
+        technique: ['0.3%', '1.5s', '175ms', '91%'],
+        satisfaction: { nps: '38', ellis: '32%' },
+        utilisation: { fonc: '55%', recTrans: '1 850', recPart: '240', regime: [38, 32, 18, 12] },
+    },
+};
+
+// ═══════════════════════════════════════════════
+//  MISE À JOUR DOM
+// ═══════════════════════════════════════════════
+function updateKPIs(d) {
+    const cards = document.querySelectorAll('.kpi-card');
+    cards.forEach((card, i) => {
+        const kpi = d.kpis[i];
+        card.querySelector('.kpi-value').textContent = kpi.value;
+        const trendEl = card.querySelector('.trend');
+        const arrow = kpi.trend === 'up' ? '▲' : '▼';
+        trendEl.textContent = `${arrow} ${kpi.delta}`;
+        trendEl.className = 'trend ' + kpi.trend;
+        const line = card.querySelector('.sparkline polyline');
+        line.setAttribute('points', d.sparklines[i]);
+        line.setAttribute('stroke', d.sparkColors[i]);
+    });
+}
+
+function updateSocial(d) {
+    const s = d.social;
+    const cards = document.querySelectorAll('.social-inner-card');
+    const set = (card, vals) => {
+        const dvs = card.querySelectorAll('.data-val');
+        vals.forEach((v, i) => { if (dvs[i]) dvs[i].textContent = v; });
+    };
+    set(cards[0], s.ig);
+    set(cards[1], s.fb);
+    set(cards[2], s.tt);
+    const web = cards[3].querySelectorAll('.data-val');
+    if (web[0]) web[0].textContent = s.web.visites;
+    if (web[1]) web[1].textContent = s.web.duree;
+    if (web[2]) web[2].textContent = s.web.conv;
+}
+
+function updateAds(d) {
+    const a = d.ads;
+    const adsBlocks = [];
+    document.querySelectorAll('.sub-block').forEach(b => {
+        const t = b.querySelector('.sub-title');
+        if (t && (t.textContent.includes('Google') || t.textContent.includes('Meta'))) {
+            adsBlocks.push(b);
+        }
+    });
+    const setAd = (block, data) => {
+        const cols = block.querySelectorAll('.data-rows');
+        if (cols[0]) {
+            const v = cols[0].querySelectorAll('.data-val');
+            if (v[0]) v[0].textContent = data.imp;
+            if (v[1]) v[1].textContent = data.cpc;
+            if (v[2]) v[2].textContent = data.conv;
+        }
+        if (cols[1]) {
+            const v = cols[1].querySelectorAll('.data-val');
+            if (v[0]) v[0].textContent = data.ctr;
+            if (v[1]) v[1].textContent = data.cpm;
+            if (v[2]) v[2].textContent = data.cpa;
+        }
+    };
+    if (adsBlocks[0]) setAd(adsBlocks[0], a.google);
+    if (adsBlocks[1]) setAd(adsBlocks[1], a.meta);
+}
+
+function updateRetention(d) {
+    const r = d.retention;
+    const svg = document.querySelector('.retention-svg');
+    if (!svg) return;
+    const maxH = 51; const baseY = 56;
+    const bars = svg.querySelectorAll('rect');
+    const pcts = svg.querySelectorAll('text.pct-label');
+    const vals = [r.j1, r.j7, r.j30];
+    bars.forEach((bar, i) => {
+        const h = Math.round(vals[i] / 80 * maxH);
+        bar.setAttribute('y', baseY - h);
+        bar.setAttribute('height', h);
+    });
+    pcts.forEach((t, i) => { t.textContent = vals[i] + '%'; });
+}
+
+function updateMetriques(d) {
+    const mauVal = document.getElementById('mau-val');
+    if (mauVal) mauVal.textContent = d.mau;
+    // Also update MAU reference in Abonnements Actifs KPI card
+    const kpiMau = document.getElementById('kpi-mau-val');
+    if (kpiMau) kpiMau.textContent = d.mau;
+    const rows = document.querySelectorAll('.metriques-row');
+    d.metriques.forEach((val, i) => {
+        const row = rows[i + 1]; // rows[0] = MAU row
+        if (row) row.querySelector('.data-val').textContent = val;
+    });
+}
+
+function updateTechnique(d) {
+    const rows = document.querySelectorAll('.technique-row');
+    d.technique.forEach((val, i) => {
+        if (rows[i]) rows[i].querySelector('.data-val').textContent = val;
+    });
+}
+
+function updateUtilisation(d) {
+    if (!d.utilisation) return;
+    const u = d.utilisation;
+    const fonc = document.querySelector('.util-fonc');
+    const recTrans = document.querySelector('.util-rec-trans');
+    const recPart = document.querySelector('.util-rec-part');
+    if (fonc) fonc.textContent = u.fonc;
+    if (recTrans) recTrans.textContent = u.recTrans;
+    if (recPart) recPart.textContent = u.recPart;
+    // Régime bars
+    const regimeRows = document.querySelectorAll('.regime-row');
+    if (u.regime && regimeRows.length) {
+        u.regime.forEach((pct, i) => {
+            if (regimeRows[i]) {
+                regimeRows[i].querySelector('.regime-val').textContent = pct + '%';
+                regimeRows[i].querySelector('.regime-bar').style.width = pct + '%';
+            }
+        });
+    }
+}
+
+function updateSatisfaction(d) {
+    const nps = document.querySelector('.nps-val');
+    const ellis = document.querySelector('.ellis-val');
+    if (nps) nps.textContent = d.satisfaction.nps;
+    if (ellis) ellis.textContent = d.satisfaction.ellis;
+}
+
+function applyPeriod(key) {
+    const d = DATA[key];
+    if (!d) return;
+    updateKPIs(d);
+    updateSocial(d);
+    updateAds(d);
+    updateRetention(d);
+    updateMetriques(d);
+    updateTechnique(d);
+    updateSatisfaction(d);
+    updateUtilisation(d);
+}
+
+// ── BOUTONS (ordre : annee_ce_jour, jour, semaine, mois, trimestre, annee)
+const periodKeys = ['annee_ce_jour','jour','semaine','mois','trimestre','annee'];
+document.querySelectorAll('.filter-btn').forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        applyPeriod(periodKeys[i]);
+    });
+});
+
+// Init → Mois (index 3)
+document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+document.querySelectorAll('.filter-btn')[3].classList.add('active');
+applyPeriod('mois');
+</script>
 </body>
 </html>
